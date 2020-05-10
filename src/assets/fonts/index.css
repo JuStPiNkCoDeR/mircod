@@ -1,0 +1,63 @@
+/** Hero fonts **/
+@font-face {
+    font-family: 'Hero Light Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Hero Light Regular'), url('HeroLight-Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Hero Light Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Hero Light Bold'), url('HeroLight-Bold.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Hero Light Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Hero Light Light'), url('HeroLight-Light.woff') format('woff');
+}
+/** Proxima Nova **/
+@font-face {
+    font-family: 'Proxima Nova';
+    src: local('Proxima Nova Bold'), local('Proxima-Nova-Bold'),
+    url('ProximaNova-Bold.woff2') format('woff2'),
+    url('ProximaNova-Bold.woff') format('woff'),
+    url('ProximaNova-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: local('Proxima Nova Extrabold'), local('Proxima-Nova-Extrabold'),
+    url('ProximaNova-Extrabld.woff2') format('woff2'),
+    url('ProximaNova-Extrabld.woff') format('woff'),
+    url('ProximaNova-Extrabld.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: local('Proxima Nova Regular'), local('Proxima-Nova-Regular'),
+    url('ProximaNova-Regular.woff2') format('woff2'),
+    url('ProximaNova-Regular.woff') format('woff'),
+    url('ProximaNova-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: local('Proxima Nova Black'), local('Proxima-Nova-Black'),
+    url('ProximaNova-Black.woff2') format('woff2'),
+    url('ProximaNova-Black.woff') format('woff'),
+    url('ProximaNova-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
