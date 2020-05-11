@@ -11,14 +11,10 @@ import {
   faChevronLeft,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
-import itemBg1 from '../../assets/images/itemBg-1B.png';
-import itemBg2 from '../../assets/images/itemBg-2B.png';
-import itemBg3 from '../../assets/images/itemBg-3B.png';
-import itemBg4 from '../../assets/images/itemBg-4B.png';
 
 export const Slider = ({items, chosenItems, onSelected, onCreated}) => {
   const MAX_SHOWN_ITEMS = 10;
-  const backgrounds = [itemBg1, itemBg2, itemBg3, itemBg4];
+  const BACKGROUND_TYPES = 4;
 
   const [leftBorderIndex, setLeftBorderIndex] = useState(0);
   const [rightBorder, setRightBorder] = useState(
@@ -72,11 +68,11 @@ export const Slider = ({items, chosenItems, onSelected, onCreated}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const backgroundIndex = Math.floor(Math.random() * backgrounds.length);
+    const backgroundType = Math.floor(Math.random() * BACKGROUND_TYPES);
     onCreated({
       ID: guid(),
       name: customName,
-      background: backgrounds[backgroundIndex],
+      background: backgroundType,
     });
     handleCloseModal();
   };
@@ -158,7 +154,7 @@ Slider.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     ID: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    background: PropTypes.string,
+    background: PropTypes.number,
   })).isRequired,
   chosenItems: PropTypes.instanceOf(Set).isRequired,
   onSelected: PropTypes.func.isRequired,
