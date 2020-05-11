@@ -2,6 +2,9 @@ import React from 'react';
 import {Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
 import {Container, Content} from '../lib/Grid';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHeart} from '@fortawesome/free-regular-svg-icons';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import Logo from '../assets/images/logo.png';
 
 export const Header = () => (
@@ -32,7 +35,9 @@ export const Header = () => (
           </NavLinksBlock>
         </Col>
         <Col xs={1} xsOffset={1}>
-          Icons
+          <Icon icon={faHeart}/>
+          <Separator/>
+          <Icon icon={faSearch}/>
         </Col>
       </Content>
     </NavContainer>
@@ -78,4 +83,18 @@ const NavLinksBlock = styled.div`
     color: #fff;
     cursor: pointer;
   }
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  
+  path {
+    fill: #f4511e;
+  }
+`;
+
+const Separator = styled.span`
+  height: 30px;
+  border: 0.5px solid #f4511e;
+  margin: 0 15px;
 `;
