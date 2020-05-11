@@ -1,11 +1,14 @@
 import React from 'react';
-import {Row, Col} from 'react-flexbox-grid';
+import {Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
-import {Container} from '../lib/Container';
+import {Container, Content} from '../lib/Grid';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHeart} from '@fortawesome/free-regular-svg-icons';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import Logo from '../assets/images/logo.png';
 
-export const Header = () => {
-  return (
+export const Header = () => (
+  <>
     <Container>
       <HeaderRow middle="xs">
         <Col xs={3}>
@@ -19,10 +22,29 @@ export const Header = () => {
         </Col>
       </HeaderRow>
     </Container>
-  );
-};
+    <NavContainer>
+      <Content middle="xs">
+        <Col xs={8} xsOffset={2}>
+          <NavLinksBlock>
+            <p>constructor</p>
+            <p>help</p>
+            <p>users panels</p>
+            <p>faq</p>
+            <p>about</p>
+            <p>blog</p>
+          </NavLinksBlock>
+        </Col>
+        <Col xs={1} xsOffset={1}>
+          <Icon icon={faHeart}/>
+          <Separator/>
+          <Icon icon={faSearch}/>
+        </Col>
+      </Content>
+    </NavContainer>
+  </>
+);
 
-const HeaderRow = styled(Row)`
+const HeaderRow = styled(Content)`
   height: 100px;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -41,7 +63,38 @@ const LogoField = styled.div`
 `;
 
 const SignInButton = styled.p`
-    font-size: 14px;
-    color: #2a2a2b;
+  text-align: center;
+  font-size: 14px;
+  color: #2a2a2b;
+  cursor: pointer;
+`;
+
+const NavContainer = styled(Container)`
+  background: #2a2a2b;
+  height: 75px;
+`;
+
+const NavLinksBlock = styled.div`
+  display: flex;
+  justify-content: space-around;
+  
+  p {
+    text-transform: uppercase;
+    color: #fff;
     cursor: pointer;
+  }
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  
+  path {
+    fill: #f4511e;
+  }
+`;
+
+const Separator = styled.span`
+  height: 30px;
+  border: 0.5px solid #f4511e;
+  margin: 0 15px;
 `;
