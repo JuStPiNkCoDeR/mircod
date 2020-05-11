@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Col} from 'react-flexbox-grid';
 import {Container, Content} from '../../lib/Grid';
 import {Slider} from './Slider';
+import {TechnicalInfo} from './TechnicalInfo';
 import ChipBackground from '../../assets/images/chipBg.jpg';
 
 export const Body = () => {
@@ -29,6 +30,13 @@ export const Body = () => {
     setSliderItems((prevState) => [...prevState, data]);
   };
 
+  const chosenItemsData = [];
+  chosenItems.forEach(
+      (value) => chosenItemsData.push(
+          sliderItems.find((item) => item.ID === value),
+      ),
+  );
+
   return (
     <Wrapper>
       <MainThemeBlock>
@@ -44,6 +52,7 @@ export const Body = () => {
         onCreated={handleSliderItemAdd}
         onSelected={handleItemToggle}
       />
+      <TechnicalInfo chosenOptions={chosenItemsData}/>
     </Wrapper>
   );
 };
