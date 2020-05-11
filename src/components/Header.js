@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
-import {Container, Content} from '../lib/Container';
+import {Container, Content} from '../lib/Grid';
 import Logo from '../assets/images/logo.png';
 
 export const Header = () => (
