@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {Container, Content} from '../../lib/Grid';
-import {Col} from 'react-flexbox-grid';
+import {Container, Content, PaddingLess} from '../../lib/Grid';
 import {getWhiteBackground} from '../../lib/helpers';
 import {StepsBlock} from './StepsBlock';
 import TechnicalInfoBackground from '../../assets/images/technicalInfoBg.png';
@@ -30,7 +29,7 @@ export const TechnicalInfo = ({chosenOptions}) => {
   return (
     <MarginContainer>
       <Content>
-        <PaddingLess xs={11} right="true">
+        <PaddingLess xs={11} right="true" left="true">
           <Wrapper>
             <ChosenOptionsField>
               <p>chosen<br/><b>options:</b></p>
@@ -54,7 +53,7 @@ export const TechnicalInfo = ({chosenOptions}) => {
             <StepsBlock step={step} onSubmit={handleNextStep}/>
           </Wrapper>
         </PaddingLess>
-        <PaddingLess xs={1} left="true">
+        <PaddingLess xs={1} left="true" right="true">
           <StepButtonsField>
             <div>
               <NextStepButton onClick={handleNextStep}/>
@@ -77,11 +76,6 @@ TechnicalInfo.propTypes = {
 
 const MarginContainer = styled(Container)`
   margin-top: 40px;
-`;
-
-const PaddingLess = styled(Col)`
-  ${({right}) => right && 'padding-right: 0;'}
-  ${({left}) => left && 'padding-left: 0;'} 
 `;
 
 const Wrapper = styled.div`

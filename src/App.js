@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Body} from './components';
+import {Header, Body, Footer} from './components';
 import './App.css';
 
 /**
@@ -11,6 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <Body />
+      <Footer />
     </div>
   );
 }
