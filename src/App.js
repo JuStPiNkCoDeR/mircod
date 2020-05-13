@@ -1,6 +1,5 @@
 import React from 'react';
 import {Header, Body, Footer} from './components';
-import './App.css';
 
 /**
  * @return {*}
@@ -8,7 +7,7 @@ import './App.css';
  */
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
       <Body />
       <Footer />
