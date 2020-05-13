@@ -41,10 +41,15 @@ export const TechnicalInfo = ({chosenOptions}) => {
               ))}
             </ChosenOptionsField>
             <StepBulletsField>
-              <Bullet active={step === 1} complete={completedStep.has(1)}/>
-              <Bullet active={step === 2} complete={completedStep.has(2)}/>
-              <Bullet active={step === 3} complete={completedStep.has(3)}/>
-              <Bullet active={step === 4} complete={completedStep.has(4)}/>
+              <BulletsField>
+                <Bullet active={step === 1} complete={completedStep.has(1)}/>
+                <Bullet active={step === 2} complete={completedStep.has(2)}/>
+                <Bullet active={step === 3} complete={completedStep.has(3)}/>
+                <Bullet active={step === 4} complete={completedStep.has(4)}/>
+              </BulletsField>
+              <CompleteStateText>
+                Complete {completedStep.size} steps of 4
+              </CompleteStateText>
             </StepBulletsField>
             <StepsBlock step={step}/>
           </Wrapper>
@@ -82,7 +87,8 @@ const PaddingLess = styled(Col)`
 const Wrapper = styled.div`
   display: flex;
   position: relative;
-  height: 500px;
+  min-height: 500px;
+  border-radius: 5px;
   background: url(${TechnicalInfoBackground}) no-repeat;
   background-size: cover;
 `;
@@ -120,11 +126,18 @@ const Option = styled.div`
 
 const StepBulletsField = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-end;
   position: absolute;
   width: 16.67%;
   top: 33px;
   right: 30px;
+`;
+
+const BulletsField = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const Bullet = styled.div`
@@ -144,6 +157,11 @@ const Bullet = styled.div`
       background: url(${CheckIcon}) no-repeat;
     }
   `}
+`;
+
+const CompleteStateText = styled.p`
+  font-size: 14px;
+  color: #5f5f5f;
 `;
 
 const StepButtonsField = styled.div`

@@ -219,6 +219,7 @@ const Modal = styled.div`
   background: rgba(0, 0, 0, 0.5);
   align-items: center;
   justify-content: center;
+  z-index: 99999;
 `;
 
 const Form = styled.form`
