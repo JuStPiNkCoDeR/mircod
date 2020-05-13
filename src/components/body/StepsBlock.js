@@ -11,7 +11,7 @@ import LogoZWave from '../../assets/images/logo-ZWave.png';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
-export const StepsBlock = ({step, onSubmit}) => {
+export const StepsBlock = ({step, isFinished, onSubmit}) => {
   const [distance, setDistance] = useState(0);
   const [selectedItem, setSelectedItem] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -61,8 +61,12 @@ export const StepsBlock = ({step, onSubmit}) => {
                 Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas
                 quam, ut aliquam massa nisl quis neque. Suspendisse in
             </p>
-            <img src={Item} alt="item"/>
-            <LiveViewText><span>live</span><br/>view</LiveViewText>
+            {isFinished && (
+              <>
+                <img src={Item} alt="item"/>
+                <LiveViewText><span>live</span><br/>view</LiveViewText>
+              </>
+            )}
           </DescriptionBlock>
           <Form onSubmit={handleSubmit}>
             <DistanceLabel htmlfor="input-distance">
@@ -168,6 +172,7 @@ export const StepsBlock = ({step, onSubmit}) => {
 
 StepsBlock.propTypes = {
   step: PropsTypes.number.isRequired,
+  isFinished: PropsTypes.bool.isRequired,
   onSubmit: PropsTypes.func.isRequired,
 };
 
