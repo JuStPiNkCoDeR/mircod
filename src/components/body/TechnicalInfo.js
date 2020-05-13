@@ -26,6 +26,8 @@ export const TechnicalInfo = ({chosenOptions}) => {
     setStep((prevState) => prevState > 1 ? prevState - 1 : prevState);
   };
 
+  const isFinished = completedStep.size === 4;
+
   return (
     <MarginContainer>
       <Content>
@@ -50,7 +52,11 @@ export const TechnicalInfo = ({chosenOptions}) => {
                 Complete {completedStep.size} steps of 4
               </CompleteStateText>
             </StepBulletsField>
-            <StepsBlock step={step} onSubmit={handleNextStep}/>
+            <StepsBlock
+              step={step}
+              isFinished={isFinished}
+              onSubmit={handleNextStep}
+            />
           </Wrapper>
         </PaddingLess>
         <PaddingLess xs={1} left="true" right="true">
