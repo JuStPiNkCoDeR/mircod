@@ -1,13 +1,40 @@
 import React, {useState} from 'react';
 import PropsTypes from 'prop-types';
 import styled from 'styled-components';
+import {Modal} from '../../lib/Modal';
+import {ConnectionItem} from './ConnectionItem';
 import Item from '../../assets/images/item.png';
+import LogoMBus from '../../assets/images/logo-MBus.png';
+import LogoWifi from '../../assets/images/logo-Wifi.png';
+import LogoXBee from '../../assets/images/logo-XBee.png';
+import LogoZWave from '../../assets/images/logo-ZWave.png';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
-export const StepsBlock = ({step}) => {
+export const StepsBlock = ({step, onSubmit}) => {
   const [distance, setDistance] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOrderClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const handleDistanceChange = (event) => {
     setDistance(+event.target.value);
+  };
+
+  const handleConnectionClick = (index) => {
+    setSelectedItem(index);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit();
   };
 
   return (
@@ -17,7 +44,7 @@ export const StepsBlock = ({step}) => {
           <DescriptionBlock>
             <OrderBlock>
               <Title>White label W-394900 XP</Title>
-              <OrderButton>order now</OrderButton>
+              <OrderButton onClick={handleOrderClick}>order now</OrderButton>
             </OrderBlock>
             <p>
               <b>
@@ -37,16 +64,16 @@ export const StepsBlock = ({step}) => {
             <img src={Item} alt="item"/>
             <LiveViewText><span>live</span><br/>view</LiveViewText>
           </DescriptionBlock>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <DistanceLabel htmlfor="input-distance">
               Transmission<br/>
               <span>Distance</span>
             </DistanceLabel>
             <DistanceBlock>
               <DistancePlaceholderBlock>
-                <DistancePlaceholder>
+                <Placeholder>
                   choose <span>distance</span>
-                </DistancePlaceholder>
+                </Placeholder>
                 <DistanceInfoBlock>
                   <CurrentDistanceText>
                     current<br/>
@@ -68,7 +95,71 @@ export const StepsBlock = ({step}) => {
                 onChange={handleDistanceChange}
               />
             </DistanceBlock>
+            <ConnectionBlock>
+              <Placeholder>
+                choose <span>type of connection</span>
+              </Placeholder>
+              <ConnectionsField>
+                <ConnectionItem
+                  logo={LogoXBee}
+                  index={1}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+                <ConnectionItem
+                  logo={LogoZWave}
+                  index={2}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+                <ConnectionItem
+                  logo={LogoXBee}
+                  index={3}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+                <ConnectionItem
+                  logo={LogoZWave}
+                  index={4}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+                <ConnectionItem
+                  logo={LogoWifi}
+                  index={5}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+                <ConnectionItem
+                  logo={LogoMBus}
+                  index={6}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+                <ConnectionItem
+                  logo={LogoWifi}
+                  index={7}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+                <ConnectionItem
+                  logo={LogoMBus}
+                  index={8}
+                  selectedIndex={selectedItem}
+                  onSelected={handleConnectionClick}
+                />
+              </ConnectionsField>
+            </ConnectionBlock>
+            <ButtonField>
+              <NextStepButton>next step</NextStepButton>
+            </ButtonField>
           </Form>
+          <Modal visible={showModal}>
+            <OrderForm>
+              <Cross icon={faTimes} onClick={handleCloseModal}/>
+              <h1>order form</h1>
+            </OrderForm>
+          </Modal>
         </StepBlock>
       )}
     </Wrapper>
@@ -77,6 +168,7 @@ export const StepsBlock = ({step}) => {
 
 StepsBlock.propTypes = {
   step: PropsTypes.number.isRequired,
+  onSubmit: PropsTypes.func.isRequired,
 };
 
 const Wrapper = styled.div`
@@ -86,11 +178,12 @@ const Wrapper = styled.div`
 
 const StepBlock = styled.div`
   display: flex;
+  padding-bottom: 40px;
 `;
 
 const DescriptionBlock = styled.div`
   position: relative;
-  width: 40%;
+  width: 53%;
   
   p {
     color: #fff;
@@ -145,7 +238,6 @@ const LiveViewText = styled.div`
 const Form = styled.form`
   margin-top: 130px;
   margin-left: 50px;
-  width: 100%;
   padding-right: 47px;
 `;
 
@@ -170,7 +262,7 @@ const DistancePlaceholderBlock = styled.div`
   width: 100%;
 `;
 
-const DistancePlaceholder = styled.p`
+const Placeholder = styled.p`
   font-size: 16px;
   color: #2a2a2b;
   text-transform: uppercase;
@@ -342,3 +434,53 @@ const DistanceInput = styled.input`
     background: #c8c8c8;
   }
 `;
+
+const ConnectionBlock = styled.div`
+  border-top: 1px solid #e8e8e8;
+  margin-top: 60px;
+  padding-top: 11px;
+`;
+
+const ConnectionsField = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const ButtonField = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 45px;
+`;
+
+const NextStepButton = styled.button`
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  background: #f14921;
+  font-size: 14px;
+  color: #fff;
+  padding: 15px 50px;
+  text-transform: uppercase;
+  cursor: pointer;
+`;
+
+const OrderForm = styled.form`
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  min-width: 40vw;
+  min-height: 60vh;
+`;
+
+const Cross = styled(FontAwesomeIcon)`
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+`;
+

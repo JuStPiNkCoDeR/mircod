@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {SliderItem} from './SliderItem';
 import {Container, Content} from '../../lib/Grid';
+import {Modal} from '../../lib/Modal';
 import {guid} from '../../lib/helpers';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
@@ -207,19 +208,6 @@ const PlusIcon = styled(FontAwesomeIcon)`
   path {
     fill: #f14921;
   }
-`;
-
-const Modal = styled.div`
-  display: ${({visible}) => visible ? 'flex' : 'none'};
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
 `;
 
 const Form = styled.form`

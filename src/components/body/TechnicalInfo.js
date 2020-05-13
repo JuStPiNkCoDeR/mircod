@@ -51,7 +51,7 @@ export const TechnicalInfo = ({chosenOptions}) => {
                 Complete {completedStep.size} steps of 4
               </CompleteStateText>
             </StepBulletsField>
-            <StepsBlock step={step}/>
+            <StepsBlock step={step} onSubmit={handleNextStep}/>
           </Wrapper>
         </PaddingLess>
         <PaddingLess xs={1} left="true">
