@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col} from 'react-flexbox-grid';
 import styled from 'styled-components';
-import {Container, Content} from '../lib/Grid';
+import {Container, Content, PaddingLess} from '../lib/Grid';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHeart} from '@fortawesome/free-regular-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import Logo from '../assets/images/logo.png';
 
 export const Header = () => (
   <>
-    <Container>
+    <Container id="top">
       <HeaderRow middle="xs">
         <Col xs={3}>
           <LogoField>
@@ -34,11 +34,11 @@ export const Header = () => (
             <p>blog</p>
           </NavLinksBlock>
         </Col>
-        <Col xs={1} xsOffset={1}>
+        <PaddingLess xs={1} xsOffset={1} right="true">
           <Icon icon={faHeart}/>
           <Separator/>
           <Icon icon={faSearch}/>
-        </Col>
+        </PaddingLess>
       </Content>
     </NavContainer>
   </>

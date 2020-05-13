@@ -183,7 +183,7 @@ const StepBlock = styled.div`
 
 const DescriptionBlock = styled.div`
   position: relative;
-  width: 53%;
+  width: 47%;
   
   p {
     color: #fff;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Row} from 'react-flexbox-grid';
+import {Col, Row} from 'react-flexbox-grid';
 
 export const Container = styled.div`
   display: flex;
@@ -20,6 +20,11 @@ export const Content = styled(Row)`
   }
     
   @media only screen and (min-width: 1200px) {
-    width: 1140px;
+    width: 1170px;
   }
+`;
+
+export const PaddingLess = styled(Col)`
+  ${({right}) => right && 'padding-right: 0;'}
+  ${({left}) => left && 'padding-left: 0;'} 
 `;
